@@ -1,0 +1,49 @@
+Sistem PraUAS
+
+Sistem 1: Smart Farm
+ Sistem Susu Hewani dan Telur:
+ - Sensor Kadar Protein
+ - Sensor Kadar Omega 3
+ - Sensor Bakteri Salmonella
+
+ Sistem Daging Merah:
+ - Sensor Muscle
+ - Sensor Kadar Darah
+ - Sensor Metana
+
+ Sistem Daging Putih:
+ - Sensor E.coli
+ - Sensor Warna
+ - Sensor Amonia
+
+Sistem 2: Smart Plantation
+ Sistem Sumber Karbohidrat:
+ - Sensor Volume
+ - Sensor Kelembaban
+ - Sensor Kadar Oksigen
+
+ Sistem Sayuran:
+ - Sensor Urea Tanah
+ - Sensor Cahaya
+ - Sensor Temperatur
+
+ Sistem Buah-Buahan:
+ - Sensor Pestisida
+ - Sensor Ukuran
+ - Sensor Berat
+
+Sistem 3: Smart Restaurant
+ Sistem Deteksi Musim:
+ - Sensor Kecepatan Angin
+ - Sensor Kadar Listrik
+ - Sensor Barometer
+
+ Sistem Deteksi Penjualan
+ - Sensor Barcode
+ - Sensor Cashflow
+ - Sensor Infrared
+
+ Sistem Deteksi Pengunjung
+ - Sensor Ultrasonic
+ - Sensor Kamera
+ - Sensor Lidar

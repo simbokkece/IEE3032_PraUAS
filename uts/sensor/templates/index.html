@@ -1,0 +1,99 @@
+<html>
+  <head>
+    <title>Sensor Value</title>
+    <meta http-equiv="refresh" content="2">
+    
+    <style>
+        .image-container {
+          float: right;
+          margin-left: 10px;
+          margin-bottom: 10px;
+        }
+        
+        .image-container img {
+          display: block;
+          margin-bottom: 10px;
+        }
+    </style>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.22.2/moment.min.js"></script>
+
+    <h1>Sistem Monitoring Pasien</h1>
+    <h3>Nathanael Hansen - 202000424</h3>
+  </head>
+
+  <body>
+    <div class="image-container">
+        <p>Paru-Paru Alarm:</p>
+        <img src="{{ paru_alarm }}" alt="Image 1" width="200" height="200">
+    </div>
+    
+    <div class="image-container">
+        <p>Lambung Alarm:</p>
+        <img src="{{ lambung_alarm }}" alt="Image 2" width="200" height="200">
+    </div>
+    
+    <div class="image-container">
+        <p>Jantung Alarm:</p>
+        <img src="{{ jantung_alarm }}" alt="Image 3" width="200" height="200">
+    </div>
+    
+
+    <div class="container">    
+      <p>Monitoring Paru-Paru</p>
+      <table border="1">
+            <tr>
+                <th align="left">Sensor Oxygen Saturation (%)</th>
+                <td style="width:30%" align="right">{{ paru_oxy }}</td>
+            </tr>
+            <tr>
+                <th align="left">Sensor Tidal Volume (mL)</th>
+                <td style="width:30%" align="right">{{ paru_tid }}</td>
+            </tr>
+            <tr>
+                <th align="left">Sensor Capacity (L)</th>
+                <td style="width:30%" align="right">{{ paru_cap }}</td>
+            </tr>
+      </table>
+
+      </br>
+      <p>Monitoring Lambung</p>
+      <table border="1">
+          <tr>
+              <th align="left">Sensor Acidity (ph)</th>
+              <td style="width:30%" align="right">{{ lambung_acid }}</td>
+          </tr>
+          <tr>
+              <th align="left">Sensor Volume (mL)</th>
+              <td style="width:30%" align="right">{{ lambung_vol }}</td>
+          </tr>
+          <tr>
+              <th align="left">Sensor Temperature (°C)</th>
+              <td style="width:30%" align="right">{{ lambung_temp }}</td>
+          </tr>
+      </table>
+
+      </br>
+      <p>Monitoring Jantung</p>
+      <table border="1">
+          <tr>
+              <th align="left">Sensor Heart Rate (bpm)</th>
+              <td style="width:30%" align="right">{{ jantung_bpm }}</td>
+          </tr>
+          <tr>
+              <th align="left">Sensor Systole (mmHg)</th>
+              <td style="width:30%" align="right">{{ jantung_sys }}</td>
+          </tr>
+          <tr>
+              <th align="left">Sensor Diastole (mmHg)</th>
+              <td style="width:30%" align="right">{{ jantung_dia }}</td>
+          </tr>
+      </table>
+    </div>
+
+    <canvas id="myChart"></canvas>
+    <script src="myscript.js"></script>
+  </body>
+</html>
