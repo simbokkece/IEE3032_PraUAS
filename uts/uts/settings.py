@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+ML_ROOT = os.path.join(BASE_DIR,'ml_model')
+ML_URL = 'ml_model/'
 
 # Application definition
 
@@ -39,6 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sensor',
+    "rest_framework",
+    "paho",
+    "ml_model"
 ]
 
 MIDDLEWARE = [

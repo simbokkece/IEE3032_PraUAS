@@ -5,60 +5,135 @@ from rest_framework.response import Response
 import paho.mqtt.client as mqtt
 import time
 
+from ml_model import machinelearning
+
 from .serializers import SensorSerializer
 from .models import Sensor
 
 
 # Create your views here.
 def index(request):
+    model1 = machinelearning.ml_susutelur
+    model2 = machinelearning.ml_dagingmerah
+    model3 = machinelearning.ml_dagingputih
+    model4 = machinelearning.ml_karbohidrat
+    model5 = machinelearning.ml_sayuran
+    model6 = machinelearning.ml_buah
+    model7 = machinelearning.ml_musim 
+    model8 = machinelearning.ml_penjualan 
+    model9 = machinelearning.ml_pengunjung 
+    model10 = machinelearning.ml_perawatan 
+    model11 = machinelearning.ml_panen
+    model12 = machinelearning.ml_promosi
+    model13 = machinelearning.ml_keuntungan
+    
+    
     susutelur_protein = Sensor.objects.get(name="susutelur_protein")
     susutelur_omega = Sensor.objects.get(name="susutelur_omega")
     susutelur_salmonella = Sensor.objects.get(name="susutelur_salmonella")
+
+    predict1 = model1.predict([float(susutelur_protein.value), float(susutelur_omega.value), float(susutelur_salmonella.value)])
+
 
     dagingmerah_muscle = Sensor.objects.get(name="dagingmerah_muscle")
     dagingmerah_darah = Sensor.objects.get(name="dagingmerah_darah")
     dagingmerah_metana = Sensor.objects.get(name="dagingmerah_metana")
 
+    predict2 = model2.predict([float(dagingmerah_muscle.value), float(dagingmerah_darah.value), float(dagingmerah_metana.value)])
+
+
     dagingputih_ecoli = Sensor.objects.get(name="dagingputih_ecoli")
     dagingputih_warna = Sensor.objects.get(name="dagingputih_warna")
     dagingputih_amonia = Sensor.objects.get(name="dagingputih_amonia")
+
+    predict3 = model3.predict([float(dagingputih_ecoli.value), float(dagingputih_warna.value), float(dagingputih_amonia.value)])
 
 
     karbohidrat_volume = Sensor.objects.get(name="karbohidrat_volume")
     karbohidrat_kelembaban = Sensor.objects.get(name="karbohidrat_kelembaban")
     karbohidrat_oksigen = Sensor.objects.get(name="karbohidrat_oksigen")
 
+    predict4 = model4.predict([float(karbohidrat_volume.value), float(karbohidrat_kelembaban.value), float(karbohidrat_oksigen.value)])
+
+
     sayuran_urea = Sensor.objects.get(name="sayuran_urea")
     sayuran_cahaya = Sensor.objects.get(name="sayuran_cahaya")
     sayuran_temperatur = Sensor.objects.get(name="sayuran_temperatur")
 
+    predict5 = model5.predict([float(sayuran_urea.value), float(sayuran_cahaya.value), float(sayuran_temperatur.value)])
+
+
     buah_pestisida = Sensor.objects.get(name="buah_pestisida")
     buah_ukuran = Sensor.objects.get(name="buah_ukuran")
     buah_berat = Sensor.objects.get(name="buah_berat")
+
+    predict6 = model6.predict([float(buah_pestisida.value), float(buah_ukuran.value), float(buah_berat.value)])
 
 
     musim_angin = Sensor.objects.get(name="musim_angin")
     musim_listrik = Sensor.objects.get(name="musim_listrik")
     musim_barometer = Sensor.objects.get(name="musim_barometer")
 
+    predict7 = model7.predict([float(musim_angin.value), float(musim_listrik.value), float(musim_barometer.value)])
+
+
     penjualan_barcode = Sensor.objects.get(name="penjualan_barcode")
     penjualan_cashflow = Sensor.objects.get(name="penjualan_cashflow")
     penjualan_infrared = Sensor.objects.get(name="penjualan_infrared")
+
+    predict8 = model8.predict([float(penjualan_barcode.value), float(penjualan_cashflow.value), float(penjualan_infrared.value)])
+
 
     pengunjung_ultrasonic = Sensor.objects.get(name="pengunjung_ultrasonic")
     pengunjung_kamera = Sensor.objects.get(name="pengunjung_kamera")
     pengunjung_lidar = Sensor.objects.get(name="pengunjung_lidar")
 
+    predict9 = model9.predict([float(pengunjung_ultrasonic.value), float(pengunjung_kamera.value), float(pengunjung_lidar.value)])
 
-    paru_alarm = 'media/green.jpg'
-    lambung_alarm = 'media/green.jpg'
-    jantung_alarm = 'media/green.jpg'
+
+    predict10 = model10.predict([float(predict1.value), float(predict2.value), float(predict3.value)])
+    predict11 = model11.predict([float(predict4.value), float(predict5.value), float(predict6.value)])
+    predict12 = model12.predict([float(predict7.value), float(predict8.value), float(predict9.value)])
+    predict13 = model13.predict([float(predict10.value), float(predict11.value), float(predict12.value)])
+
+
+    alarm1 = 'media/green.jpg'
+    alarm2 = 'media/green.jpg'
+    alarm3 = 'media/green.jpg'
+    alarm4 = 'media/green.jpg'
+    alarm5 = 'media/green.jpg'
+    alarm6 = 'media/green.jpg'
+    alarm7 = 'media/green.jpg'
+    alarm8 = 'media/green.jpg'
+    alarm9 = 'media/green.jpg'
+    alarm10 = 'media/green.jpg'
+    alarm11 = 'media/green.jpg'
+    alarm12 = 'media/green.jpg'
+    alarm13 = 'media/green.jpg'
+
+
+    number = [predict1, predict2, predict3, predict4, predict5, predict6, predict7, predict8, predict9, predict10, predict11, predict12, predict13]
+    alarm = [alarm1, alarm2, alarm3, alarm4, alarm5, alarm6, alarm7, alarm8, alarm9, alarm10, alarm11, alarm12, alarm13]
+
+    for i in len(number):
+        if number[i] < 80:
+            alarm[i] = 'media/red.jpg'
 
 
     context = {
-        'paru_alarm' : str(paru_alarm),
-        'lambung_alarm' : str(lambung_alarm),
-        'jantung_alarm' : str(jantung_alarm),
+        "alarm1" : str(alarm1),
+        "alarm2" : str(alarm2),
+        "alarm3" : str(alarm3),
+        "alarm4" : str(alarm4),
+        "alarm5" : str(alarm5),
+        "alarm6" : str(alarm6),
+        "alarm7" : str(alarm7),
+        "alarm8" : str(alarm8),
+        "alarm9" : str(alarm9),
+        "alarm10" : str(alarm10),
+        "alarm11" : str(alarm11),
+        "alarm12" : str(alarm12),
+        "alarm13" : str(alarm13),
 
         "susutelur_protein" : str(susutelur_protein.value),
         "susutelur_omega" : str(susutelur_omega.value),
@@ -86,7 +161,21 @@ def index(request):
         "penjualan_infrared" : str(penjualan_infrared.value),
         "pengunjung_ultrasonic" : str(pengunjung_ultrasonic.value),
         "pengunjung_kamera" : str(pengunjung_kamera.value),
-        "pengunjung_lidar" : str(pengunjung_lidar.value)
+        "pengunjung_lidar" : str(pengunjung_lidar.value),
+
+        "predict1" : str(predict1.value),
+        "predict2" : str(predict2.value),
+        "predict3" : str(predict3.value),
+        "predict4" : str(predict4.value),
+        "predict5" : str(predict5.value),
+        "predict6" : str(predict6.value),
+        "predict7" : str(predict7.value),
+        "predict8" : str(predict8.value),
+        "predict9" : str(predict9.value),
+        "predict10" : str(predict10.value),
+        "predict11" : str(predict11.value),
+        "predict12" : str(predict12.value),
+        "predict13" : str(predict13.value)
     }
 
     return render(request, 'index.html', context)
@@ -381,9 +470,9 @@ client.message_callback_add('susutelur/protein', on_message_pro)
 client.message_callback_add('susutelur/omega', on_message_ome)
 client.message_callback_add('susutelur/salmonella', on_message_sal)
 
-client.message_callback_add('daingmerah/muscle', on_message_mus)
-client.message_callback_add('daingmerah/darah', on_message_dar)
-client.message_callback_add('daingmerah/metana', on_message_met)
+client.message_callback_add('dagingmerah/muscle', on_message_mus)
+client.message_callback_add('dagingmerah/darah', on_message_dar)
+client.message_callback_add('dagingmerah/metana', on_message_met)
 
 client.message_callback_add('dagingputih/ecoli', on_message_eco)
 client.message_callback_add('dagingputih/warna', on_message_war)
@@ -392,7 +481,7 @@ client.message_callback_add('dagingputih/amonia', on_message_amo)
 
 client.message_callback_add('karbohidrat/volume', on_message_vol)
 client.message_callback_add('karbohidrat/kelembaban', on_message_kel)
-client.message_callback_add('karbohidratit/oksigen', on_message_oxy)
+client.message_callback_add('karbohidrat/oksigen', on_message_oxy)
 
 client.message_callback_add('sayuran/urea', on_message_ure)
 client.message_callback_add('sayuran/cahaya', on_message_cah)

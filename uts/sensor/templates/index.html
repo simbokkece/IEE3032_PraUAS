@@ -26,176 +26,234 @@
 
   <body>
     <div class="image-container">
-        <p>Paru-Paru Alarm:</p>
-        <img src="{{ paru_alarm }}" alt="Image 1" width="200" height="200">
+        <p>Pembersihan:</p>
+        <img src="{{ alarm1 }}" alt="Image 1" width="150" height="150">
+        <p>{{ predict1 }}</p>
     </div>
-    
     <div class="image-container">
-        <p>Lambung Alarm:</p>
-        <img src="{{ lambung_alarm }}" alt="Image 2" width="200" height="200">
+        <p>Pemotongan:</p>
+        <img src="{{ alarm2 }}" alt="Image 2" width="150" height="150">
+        <p>{{ predict2 }}</p>
     </div>
-    
     <div class="image-container">
-        <p>Jantung Alarm:</p>
-        <img src="{{ jantung_alarm }}" alt="Image 3" width="200" height="200">
+        <p>Pengemasan:</p>
+        <img src="{{ alarm3 }}" alt="Image 3" width="150" height="150">
+        <p>{{ predict3 }}</p>
+    </div>
+
+
+    <div class="image-container">
+        <p>Penuaian:</p>
+        <img src="{{ alarm4 }}" alt="Image 1" width="150" height="150">
+        <p>{{ predict4 }}</p>
+    </div>
+    <div class="image-container">
+        <p>Penyiraman:</p>
+        <img src="{{ alarm5 }}" alt="Image 2" width="150" height="150">
+        <p>{{ predict5 }}</p>
+    </div>
+    <div class="image-container">
+        <p>Penyiangan:</p>
+        <img src="{{ alarm6 }}" alt="Image 3" width="150" height="150">
+        <p>{{ predict6 }}</p>
+    </div>
+
+
+    <div class="image-container">
+        <p>HVAC:</p>
+        <img src="{{ alarm7 }}" alt="Image 1" width="150" height="150">
+        <p>{{ predict7 }}</p>
+    </div>
+    <div class="image-container">
+        <p>Sales:</p>
+        <img src="{{ alarm8 }}" alt="Image 2" width="150" height="150">
+        <p>{{ predict8 }}</p>
+    </div>
+    <div class="image-container">
+        <p>Total:</p>
+        <img src="{{ alarm9 }}" alt="Image 3" width="150" height="150">
+        <p>{{ predict9 }}</p>
     </div>
     
 
+    <div class="image-container">
+        <p>Care:</p>
+        <img src="{{ alarm10 }}" alt="Image 1" width="150" height="150">
+        <p>{{ predict10 }}</p>
+    </div>
+    <div class="image-container">
+        <p>Harvest:</p>
+        <img src="{{ alarm11 }}" alt="Image 2" width="150" height="150">
+        <p>{{ predict11 }}</p>
+    </div>
+    <div class="image-container">
+        <p>Promotion:</p>
+        <img src="{{ alarm12 }}" alt="Image 3" width="150" height="150">
+        <p>{{ predict12 }}</p>
+    </div>
+    <div class="image-container">
+        <p>Profit:</p>
+        <img src="{{ alarm13 }}" alt="Image 3" width="150" height="150">
+        <p>{{ predict13 }}</p>
+    </div>
+
+
     <div class="container">
-      <h2>Nathanael Hansen - 202000424</h2>    
-      <p>Monitoring Paru-Paru</p>
+      <h3>Sistem Smart Farm</h3>   
+      <p>Monitoring Susu dan Telur</p>
       <table border="1">
             <tr>
-                <th align="left">Sensor Oxygen Saturation (%)</th>
-                <td style="width:30%" align="right">{{ paru_oxy }}</td>
+                <th align="left">Sensor Kadar Protein (%)</th>
+                <td style="width:30%" align="right">{{ susutelur_protein }}</td>
             </tr>
             <tr>
-                <th align="left">Sensor Tidal Volume (mL)</th>
-                <td style="width:30%" align="right">{{ paru_tid }}</td>
+                <th align="left">Sensor Omega 3 (mL)</th>
+                <td style="width:30%" align="right">{{ susutelur_omega }}</td>
             </tr>
             <tr>
-                <th align="left">Sensor Capacity (L)</th>
-                <td style="width:30%" align="right">{{ paru_cap }}</td>
+                <th align="left">Sensor Salmonella (L)</th>
+                <td style="width:30%" align="right">{{ susutelur_salmonella }}</td>
             </tr>
       </table>
 
       </br>
-      <p>Monitoring Lambung</p>
+      <p>Monitoring Daging Merah</p>
       <table border="1">
           <tr>
-              <th align="left">Sensor Acidity (ph)</th>
-              <td style="width:30%" align="right">{{ lambung_acid }}</td>
+              <th align="left">Sensor Muscle (ph)</th>
+              <td style="width:30%" align="right">{{ dagingmerah_muscle }}</td>
           </tr>
           <tr>
-              <th align="left">Sensor Volume (mL)</th>
-              <td style="width:30%" align="right">{{ lambung_vol }}</td>
+              <th align="left">Sensor Kadar Darah (mL)</th>
+              <td style="width:30%" align="right">{{ dagingmerah_darah }}</td>
           </tr>
           <tr>
-              <th align="left">Sensor Temperature (°C)</th>
-              <td style="width:30%" align="right">{{ lambung_temp }}</td>
+              <th align="left">Sensor Gas Metana (°C)</th>
+              <td style="width:30%" align="right">{{ dagingmerah_metana }}</td>
           </tr>
       </table>
 
       </br>
-      <p>Monitoring Jantung</p>
+      <p>Monitoring Daging Putih</p>
       <table border="1">
           <tr>
-              <th align="left">Sensor Heart Rate (bpm)</th>
-              <td style="width:30%" align="right">{{ jantung_bpm }}</td>
+              <th align="left">Sensor E.coli (bpm)</th>
+              <td style="width:30%" align="right">{{ dagingputih_ecoli }}</td>
           </tr>
           <tr>
-              <th align="left">Sensor Systole (mmHg)</th>
-              <td style="width:30%" align="right">{{ jantung_sys }}</td>
+              <th align="left">Sensor Warna (mmHg)</th>
+              <td style="width:30%" align="right">{{ dagingputih_warna }}</td>
           </tr>
           <tr>
-              <th align="left">Sensor Diastole (mmHg)</th>
-              <td style="width:30%" align="right">{{ jantung_dia }}</td>
+              <th align="left">Sensor Amonia (mmHg)</th>
+              <td style="width:30%" align="right">{{ dagingputih_amonia }}</td>
           </tr>
       </table>
     </div>
 
+
     <div class="container">
-        <h2>Nathanael Hansen - 202000424</h2>    
-        <p>Monitoring Paru-Paru</p>
+        <h3>Sistem Smart Plantation</h3>    
+        <p>Monitoring Sumber Karbohidrat</p>
         <table border="1">
             <tr>
-                <th align="left">Sensor Oxygen Saturation (%)</th>
-                <td style="width:30%" align="right">{{ paru_oxy }}</td>
+                <th align="left">Sensor Volume (%)</th>
+                <td style="width:30%" align="right">{{ karbohidrat_volume }}</td>
             </tr>
             <tr>
-                <th align="left">Sensor Tidal Volume (mL)</th>
-                <td style="width:30%" align="right">{{ paru_tid }}</td>
+                <th align="left">Sensor Kelembaban (mL)</th>
+                <td style="width:30%" align="right">{{ karbohidrat_kelembaban }}</td>
             </tr>
             <tr>
-                <th align="left">Sensor Capacity (L)</th>
-                <td style="width:30%" align="right">{{ paru_cap }}</td>
+                <th align="left">Sensor Kadar Oksigen (L)</th>
+                <td style="width:30%" align="right">{{ karbohidrat_oksigen }}</td>
             </tr>
     </table>
 
     </br>
-    <p>Monitoring Lambung</p>
+    <p>Monitoring Sayuran</p>
     <table border="1">
         <tr>
-            <th align="left">Sensor Acidity (ph)</th>
-            <td style="width:30%" align="right">{{ lambung_acid }}</td>
+            <th align="left">Sensor Urea Tanah (ph)</th>
+            <td style="width:30%" align="right">{{ sayuran_urea }}</td>
         </tr>
         <tr>
-            <th align="left">Sensor Volume (mL)</th>
-            <td style="width:30%" align="right">{{ lambung_vol }}</td>
+            <th align="left">Sensor Cahaya (mL)</th>
+            <td style="width:30%" align="right">{{ sayuran_cahaya }}</td>
         </tr>
         <tr>
             <th align="left">Sensor Temperature (°C)</th>
-            <td style="width:30%" align="right">{{ lambung_temp }}</td>
+            <td style="width:30%" align="right">{{ sayuran_temperatur }}</td>
         </tr>
     </table>
 
     </br>
-    <p>Monitoring Jantung</p>
+    <p>Monitoring Buah-Buahan</p>
     <table border="1">
         <tr>
-            <th align="left">Sensor Heart Rate (bpm)</th>
-            <td style="width:30%" align="right">{{ jantung_bpm }}</td>
+            <th align="left">Sensor Pestisida (mg)</th>
+            <td style="width:30%" align="right">{{ buah_pestisida }}</td>
         </tr>
         <tr>
-            <th align="left">Sensor Systole (mmHg)</th>
-            <td style="width:30%" align="right">{{ jantung_sys }}</td>
+            <th align="left">Sensor Ukuran (mm)</th>
+            <td style="width:30%" align="right">{{ buah_ukuran }}</td>
         </tr>
         <tr>
-            <th align="left">Sensor Diastole (mmHg)</th>
-            <td style="width:30%" align="right">{{ jantung_dia }}</td>
+            <th align="left">Sensor Berat (Kg)</th>
+            <td style="width:30%" align="right">{{ buah_berat }}</td>
         </tr>
     </table>
     </div>
 
     <div class="container">
-        <h2>Nathanael Hansen - 202000424</h2>    
-        <p>Monitoring Paru-Paru</p>
+        <h3>Sistem Smart Restaurant</h3>    
+        <p>Monitoring Musim</p>
         <table border="1">
                 <tr>
-                    <th align="left">Sensor Oxygen Saturation (%)</th>
-                    <td style="width:30%" align="right">{{ paru_oxy }}</td>
+                    <th align="left">Sensor Kecepatan Angin (mph)</th>
+                    <td style="width:30%" align="right">{{ musim_angin }}</td>
                 </tr>
                 <tr>
-                    <th align="left">Sensor Tidal Volume (mL)</th>
-                    <td style="width:30%" align="right">{{ paru_tid }}</td>
+                    <th align="left">Sensor Kadar Listrik (mV)</th>
+                    <td style="width:30%" align="right">{{ musim_listrik }}</td>
                 </tr>
                 <tr>
-                    <th align="left">Sensor Capacity (L)</th>
-                    <td style="width:30%" align="right">{{ paru_cap }}</td>
+                    <th align="left">Sensor Barometer (psi)</th>
+                    <td style="width:30%" align="right">{{ musim_barometer }}</td>
                 </tr>
         </table>
 
         </br>
-        <p>Monitoring Lambung</p>
+        <p>Monitoring Penjualan</p>
         <table border="1">
             <tr>
-                <th align="left">Sensor Acidity (ph)</th>
-                <td style="width:30%" align="right">{{ lambung_acid }}</td>
+                <th align="left">Sensor Barcode (pcs)</th>
+                <td style="width:30%" align="right">{{ penjualan_barcode }}</td>
             </tr>
             <tr>
-                <th align="left">Sensor Volume (mL)</th>
-                <td style="width:30%" align="right">{{ lambung_vol }}</td>
+                <th align="left">Sensor Cashflow (Rp)</th>
+                <td style="width:30%" align="right">{{ penjualan_cashflow }}</td>
             </tr>
             <tr>
-                <th align="left">Sensor Temperature (°C)</th>
-                <td style="width:30%" align="right">{{ lambung_temp }}</td>
+                <th align="left">Sensor Infrared (cm)</th>
+                <td style="width:30%" align="right">{{ penjualan_infrared }}</td>
             </tr>
         </table>
 
         </br>
-        <p>Monitoring Jantung</p>
+        <p>Monitoring Pengunjung</p>
         <table border="1">
             <tr>
-                <th align="left">Sensor Heart Rate (bpm)</th>
-                <td style="width:30%" align="right">{{ jantung_bpm }}</td>
+                <th align="left">Sensor Ultrasonic (m)</th>
+                <td style="width:30%" align="right">{{ pengunjung_ultrasonic }}</td>
             </tr>
             <tr>
-                <th align="left">Sensor Systole (mmHg)</th>
-                <td style="width:30%" align="right">{{ jantung_sys }}</td>
+                <th align="left">Sensor Kamera (unit)</th>
+                <td style="width:30%" align="right">{{ pengunjung_kamera }}</td>
             </tr>
             <tr>
-                <th align="left">Sensor Diastole (mmHg)</th>
-                <td style="width:30%" align="right">{{ jantung_dia }}</td>
+                <th align="left">Sensor Lidar (cm)</th>
+                <td style="width:30%" align="right">{{ pengunjung_lidar }}</td>
             </tr>
         </table>
     </div>
