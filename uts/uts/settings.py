@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-ML_ROOT = os.path.join(BASE_DIR,'ml_model')
+ML_ROOT = os.path.join(BASE_DIR,'ml_model/')
 ML_URL = 'ml_model/'
 
 # Application definition

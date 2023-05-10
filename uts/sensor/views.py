@@ -91,11 +91,12 @@ def index(request):
     predict9 = model9.predict([float(pengunjung_ultrasonic.value), float(pengunjung_kamera.value), float(pengunjung_lidar.value)])
 
 
-    predict10 = model10.predict([float(predict1.value), float(predict2.value), float(predict3.value)])
-    predict11 = model11.predict([float(predict4.value), float(predict5.value), float(predict6.value)])
-    predict12 = model12.predict([float(predict7.value), float(predict8.value), float(predict9.value)])
-    predict13 = model13.predict([float(predict10.value), float(predict11.value), float(predict12.value)])
+    predict10 = model10.predict([float(predict1[0][0]), float(predict2[0][0]), float(predict3[0][0])])
+    predict11 = model11.predict([float(predict4[0][0]), float(predict5[0][0]), float(predict6[0][0])])
+    predict12 = model12.predict([float(predict7[0][0]), float(predict8[0][0]), float(predict9[0][0])])
+    predict13 = model13.predict([float(predict10[0][0]), float(predict11[0][0]), float(predict12[0][0])])
 
+    print(predict10)
 
     alarm1 = 'media/green.jpg'
     alarm2 = 'media/green.jpg'
@@ -115,7 +116,7 @@ def index(request):
     number = [predict1, predict2, predict3, predict4, predict5, predict6, predict7, predict8, predict9, predict10, predict11, predict12, predict13]
     alarm = [alarm1, alarm2, alarm3, alarm4, alarm5, alarm6, alarm7, alarm8, alarm9, alarm10, alarm11, alarm12, alarm13]
 
-    for i in len(number):
+    for i in range(len(number)):
         if number[i] < 80:
             alarm[i] = 'media/red.jpg'
 
@@ -163,19 +164,19 @@ def index(request):
         "pengunjung_kamera" : str(pengunjung_kamera.value),
         "pengunjung_lidar" : str(pengunjung_lidar.value),
 
-        "predict1" : str(predict1.value),
-        "predict2" : str(predict2.value),
-        "predict3" : str(predict3.value),
-        "predict4" : str(predict4.value),
-        "predict5" : str(predict5.value),
-        "predict6" : str(predict6.value),
-        "predict7" : str(predict7.value),
-        "predict8" : str(predict8.value),
-        "predict9" : str(predict9.value),
-        "predict10" : str(predict10.value),
-        "predict11" : str(predict11.value),
-        "predict12" : str(predict12.value),
-        "predict13" : str(predict13.value)
+        "predict1" : str(predict1[0][0]),
+        "predict2" : str(predict2[0][0]),
+        "predict3" : str(predict3[0][0]),
+        "predict4" : str(predict4[0][0]),
+        "predict5" : str(predict5[0][0]),
+        "predict6" : str(predict6[0][0]),
+        "predict7" : str(predict7[0][0]),
+        "predict8" : str(predict8[0][0]),
+        "predict9" : str(predict9[0][0]),
+        "predict10" : str(predict10[0][0]),
+        "predict11" : str(predict11[0][0]),
+        "predict12" : str(predict12[0][0]),
+        "predict13" : str(predict13[0][0])
     }
 
     return render(request, 'index.html', context)
@@ -189,7 +190,6 @@ def on_message_pro(client, userdata, msg):
     serializer = SensorSerializer(susutelur_protein, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new PROTEIN data ', msg.payload.decode('utf-8'))
     
 def on_message_ome(client, userdata, msg):
     susutelur_omega = Sensor.objects.get(name="susutelur_omega")
@@ -199,8 +199,7 @@ def on_message_ome(client, userdata, msg):
     serializer = SensorSerializer(susutelur_omega, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new OMEGA data ', msg.payload.decode('utf-8'))
-     
+
 def on_message_sal(client, userdata, msg):
     susutelur_salmonella = Sensor.objects.get(name="susutelur_salmonella")
     data = {
@@ -209,8 +208,7 @@ def on_message_sal(client, userdata, msg):
     serializer = SensorSerializer(susutelur_salmonella, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new CAPACITY data ', msg.payload.decode('utf-8'))
-
+    
 
 def on_message_mus(client, userdata, msg):
     dagingmerah_muscle = Sensor.objects.get(name="dagingmerah_muscle")
@@ -220,8 +218,7 @@ def on_message_mus(client, userdata, msg):
     serializer = SensorSerializer(dagingmerah_muscle, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new ACIDITY data ', msg.payload.decode('utf-8'))
-
+    
 def on_message_dar(client, userdata, msg):
     dagingmerah_darah = Sensor.objects.get(name="dagingmerah_darah")
     data = {
@@ -230,7 +227,6 @@ def on_message_dar(client, userdata, msg):
     serializer = SensorSerializer(dagingmerah_darah, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new VOLUME data ', msg.payload.decode('utf-8'))
 
 def on_message_met(client, userdata, msg):
     dagingmerah_metana = Sensor.objects.get(name="dagingmerah_metana")
@@ -240,8 +236,7 @@ def on_message_met(client, userdata, msg):
     serializer = SensorSerializer(dagingmerah_metana, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new TEMPERATURE data ', msg.payload.decode('utf-8'))
-
+   
 
 def on_message_eco(client, userdata, msg):
     dagingputih_ecoli = Sensor.objects.get(name="dagingputih_ecoli")
@@ -251,8 +246,7 @@ def on_message_eco(client, userdata, msg):
     serializer = SensorSerializer(dagingputih_ecoli, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new BPM data ', msg.payload.decode('utf-8'))
-
+   
 def on_message_war(client, userdata, msg):
     dagingputih_warna = Sensor.objects.get(name="dagingputih_warna")
     data = {
@@ -261,8 +255,7 @@ def on_message_war(client, userdata, msg):
     serializer = SensorSerializer(dagingputih_warna, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new SYSTOLE data ', msg.payload.decode('utf-8'))
-
+    
 def on_message_amo(client, userdata, msg):
     dagingputih_amonia = Sensor.objects.get(name="dagingputih_amonia")
     data = {
@@ -271,8 +264,7 @@ def on_message_amo(client, userdata, msg):
     serializer = SensorSerializer(dagingputih_amonia, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new DIASTOLE data ', msg.payload.decode('utf-8'))
-
+    
 
 
 def on_message_vol(client, userdata, msg):
@@ -283,7 +275,6 @@ def on_message_vol(client, userdata, msg):
     serializer = SensorSerializer(karbohidrat_volume, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new PROTEIN data ', msg.payload.decode('utf-8'))
     
 def on_message_kel(client, userdata, msg):
     karbohidrat_kelembaban = Sensor.objects.get(name="karbohidrat_kelembaban")
@@ -293,7 +284,6 @@ def on_message_kel(client, userdata, msg):
     serializer = SensorSerializer(karbohidrat_kelembaban, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new OMEGA data ', msg.payload.decode('utf-8'))
      
 def on_message_oxy(client, userdata, msg):
     karbohidrat_oksigen = Sensor.objects.get(name="karbohidrat_oksigen")
@@ -303,8 +293,7 @@ def on_message_oxy(client, userdata, msg):
     serializer = SensorSerializer(karbohidrat_oksigen, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new CAPACITY data ', msg.payload.decode('utf-8'))
-
+   
 
 def on_message_ure(client, userdata, msg):
     sayuran_urea = Sensor.objects.get(name="sayuran_urea")
@@ -314,8 +303,7 @@ def on_message_ure(client, userdata, msg):
     serializer = SensorSerializer(sayuran_urea, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new ACIDITY data ', msg.payload.decode('utf-8'))
-
+    
 def on_message_cah(client, userdata, msg):
     sayuran_cahaya = Sensor.objects.get(name="sayuran_cahaya")
     data = {
@@ -324,8 +312,7 @@ def on_message_cah(client, userdata, msg):
     serializer = SensorSerializer(sayuran_cahaya, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new VOLUME data ', msg.payload.decode('utf-8'))
-
+    
 def on_message_tem(client, userdata, msg):
     sayuran_temperatur = Sensor.objects.get(name="sayuran_temperatur")
     data = {
@@ -334,8 +321,7 @@ def on_message_tem(client, userdata, msg):
     serializer = SensorSerializer(sayuran_temperatur, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new TEMPERATURE data ', msg.payload.decode('utf-8'))
-
+    
 
 def on_message_pes(client, userdata, msg):
     buah_pestisida = Sensor.objects.get(name="buah_pestisida")
@@ -345,8 +331,7 @@ def on_message_pes(client, userdata, msg):
     serializer = SensorSerializer(buah_pestisida, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new BPM data ', msg.payload.decode('utf-8'))
-
+   
 def on_message_uku(client, userdata, msg):
     buah_ukuran = Sensor.objects.get(name="buah_ukuran")
     data = {
@@ -355,8 +340,7 @@ def on_message_uku(client, userdata, msg):
     serializer = SensorSerializer(buah_ukuran, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new SYSTOLE data ', msg.payload.decode('utf-8'))
-
+   
 def on_message_ber(client, userdata, msg):
     buah_berat = Sensor.objects.get(name="buah_berat")
     data = {
@@ -365,8 +349,7 @@ def on_message_ber(client, userdata, msg):
     serializer = SensorSerializer(buah_berat, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new DIASTOLE data ', msg.payload.decode('utf-8'))
-
+   
 
 
 def on_message_ang(client, userdata, msg):
@@ -377,7 +360,6 @@ def on_message_ang(client, userdata, msg):
     serializer = SensorSerializer(musim_angin, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new PROTEIN data ', msg.payload.decode('utf-8'))
     
 def on_message_lis(client, userdata, msg):
     musim_listrik = Sensor.objects.get(name="musim_listrik")
@@ -387,7 +369,6 @@ def on_message_lis(client, userdata, msg):
     serializer = SensorSerializer(musim_listrik, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new OMEGA data ', msg.payload.decode('utf-8'))
      
 def on_message_bar(client, userdata, msg):
     musim_barometer = Sensor.objects.get(name="musim_barometer")
@@ -397,8 +378,7 @@ def on_message_bar(client, userdata, msg):
     serializer = SensorSerializer(musim_barometer, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new CAPACITY data ', msg.payload.decode('utf-8'))
-
+    
 
 def on_message_cod(client, userdata, msg):
     penjualan_barcode = Sensor.objects.get(name="penjualan_barcode")
@@ -408,8 +388,7 @@ def on_message_cod(client, userdata, msg):
     serializer = SensorSerializer(penjualan_barcode, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new ACIDITY data ', msg.payload.decode('utf-8'))
-
+    
 def on_message_cas(client, userdata, msg):
     penjualan_cashflow = Sensor.objects.get(name="penjualan_cashflow")
     data = {
@@ -418,8 +397,7 @@ def on_message_cas(client, userdata, msg):
     serializer = SensorSerializer(penjualan_cashflow, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new VOLUME data ', msg.payload.decode('utf-8'))
-
+    
 def on_message_inf(client, userdata, msg):
     penjualan_infrared = Sensor.objects.get(name="penjualan_infrared")
     data = {
@@ -428,8 +406,7 @@ def on_message_inf(client, userdata, msg):
     serializer = SensorSerializer(penjualan_infrared, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new TEMPERATURE data ', msg.payload.decode('utf-8'))
-
+    
 
 def on_message_ult(client, userdata, msg):
     pengunjung_ultrasonic = Sensor.objects.get(name="pengunjung_ultrasonic")
@@ -439,8 +416,7 @@ def on_message_ult(client, userdata, msg):
     serializer = SensorSerializer(pengunjung_ultrasonic, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new BPM data ', msg.payload.decode('utf-8'))
-
+    
 def on_message_kam(client, userdata, msg):
     pengunjung_kamera = Sensor.objects.get(name="pengunjung_kamera")
     data = {
@@ -449,8 +425,7 @@ def on_message_kam(client, userdata, msg):
     serializer = SensorSerializer(pengunjung_kamera, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new SYSTOLE data ', msg.payload.decode('utf-8'))
-
+    
 def on_message_lid(client, userdata, msg):
     pengunjung_lidar = Sensor.objects.get(name="pengunjung_lidar")
     data = {
@@ -459,8 +434,7 @@ def on_message_lid(client, userdata, msg):
     serializer = SensorSerializer(pengunjung_lidar, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
-    print('received a new DIASTOLE data ', msg.payload.decode('utf-8'))
-
+    
 
 
 
