@@ -1,7 +1,7 @@
 <html>
   <head>
     <title>Pabrik Pintar</title>
-    <meta http-equiv="refresh" content="2">
+    <meta http-equiv="refresh" content="3">
     
     <style>
         .image-container {
@@ -19,13 +19,265 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.22.2/moment.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
     <h1>Sistem Pabrik Pintar</h1>
     <h2>Nathanael Hansen - 202000424</h2>
   </head>
 
   <body>
-    <div class="image-container">
+    <div id="graph1" class="image-container"></div>
+    <script>
+        function rand() { 
+            return "{{ predict1 }}";
+        }
+        const layout = {title:"World Wide Wine Production"};
+        Plotly.plot('graph', [{
+            y: [1,2,3].map(rand),
+            mode: 'lines',
+            line: {color: '#80CAF6'}
+        }], layout);
+        
+        var cnt = 0;
+        
+        var interval = setInterval(function() {
+            
+            Plotly.extendTraces('graph1', {
+            y: [[ rand() ]]
+            }, [0], layout)
+        
+            if(cnt === 100) clearInterval(interval);
+        }, 300);
+    </script>
+    <p class="image-container">Pembersihan:</p>
+
+    <div id="graph2" class="image-container"></div>
+    <p class="image-container">Pemotongan:</p>
+    <script>
+        function rand() { 
+            return "{{ predict2 }}";
+        }
+        
+        Plotly.plot('graph2', [{
+            y: [1,2,3].map(rand),
+            mode: 'lines',
+            line: {color: '#80CAF6'}
+        }]);
+        
+        var cnt = 0;
+        
+        var interval = setInterval(function() {
+            
+            Plotly.extendTraces('graph2', {
+            y: [[ rand() ]]
+            }, [0])
+        
+            if(cnt === 100) clearInterval(interval);
+        }, 300);
+    </script>
+
+    <div id="graph3" class="image-container"></div>
+    <script>
+        function rand() { return "{{ predict3 }}"; }
+        
+        Plotly.plot('graph3', [{y: [1,2,3].map(rand), mode: 'lines', 
+        line: {color: '#80CAF6'}
+        }]);
+        
+        var cnt = 0;
+        var interval = setInterval(function() {
+            
+            Plotly.extendTraces('graph3', {y: [[ rand() ]]}, [0])
+            if(cnt === 100) clearInterval(interval);}, 300);
+    </script>
+
+    <div id="graph4" class="image-container"></div>
+    <script>
+        function rand() { 
+            return "{{ predict4 }}";
+        }
+        
+        Plotly.plot('graph4', [{
+            y: [1,2,3].map(rand),
+            mode: 'lines',
+            line: {color: '#80CAF6'}
+        }]);
+        
+        var cnt = 0;
+        
+        var interval = setInterval(function() {
+            
+            Plotly.extendTraces('graph4', {
+            y: [[ rand() ]]
+            }, [0])
+        
+            if(cnt === 100) clearInterval(interval);
+        }, 300);
+    </script>
+
+    <div id="graph5" class="image-container"></div>
+    <script>
+        function rand() { 
+            return "{{ predict5 }}";
+        }
+        
+        Plotly.plot('graph5', [{
+            y: [1,2,3].map(rand),
+            mode: 'lines',
+            line: {color: '#80CAF6'}
+        }]);
+        
+        var cnt = 0;
+        
+        var interval = setInterval(function() {
+            
+            Plotly.extendTraces('grap5', {
+            y: [[ rand() ]]
+            }, [0])
+        
+            if(cnt === 100) clearInterval(interval);
+        }, 300);
+    </script>
+
+    <div id="graph6" class="image-container"></div>
+    <script>
+        function rand() { 
+            return "{{ predict6 }}";
+        }
+        
+        Plotly.plot('graph6', [{
+            y: [1,2,3].map(rand),
+            mode: 'lines',
+            line: {color: '#80CAF6'}
+        }]);
+        
+        var cnt = 0;
+        
+        var interval = setInterval(function() {
+            
+            Plotly.extendTraces('graph6', {
+            y: [[ rand() ]]
+            }, [0])
+        
+            if(cnt === 100) clearInterval(interval);
+        }, 300);
+    </script>
+
+    <div id="graph7" class="image-container"></div>
+    <script>
+        function rand() { 
+            return "{{ predict7 }}";
+        }
+        
+        Plotly.plot('graph7', [{
+            y: [1,2,3].map(rand),
+            mode: 'lines',
+            line: {color: '#80CAF6'}
+        }]);
+        
+        var cnt = 0;
+        
+        var interval = setInterval(function() {
+            
+            Plotly.extendTraces('graph7', {
+            y: [[ rand() ]]
+            }, [0])
+        
+            if(cnt === 100) clearInterval(interval);
+        }, 300);
+    </script>
+
+    <div id="graph8" class="image-container"></div>
+    <script>
+        function rand() { return "{{ predict8 }}"; }
+        
+        Plotly.plot('graph8', [{y: [1,2,3].map(rand), mode: 'lines', 
+        line: {color: '#80CAF6'}
+        }]);
+        
+        var cnt = 0;
+        var interval = setInterval(function() {
+            
+            Plotly.extendTraces('graph8', {y: [[ rand() ]]}, [0])
+            if(cnt === 100) clearInterval(interval);}, 300);
+    </script>
+
+    <div id="graph9" class="image-container"></div>
+    <script>
+        function rand() { return "{{ predict9 }}"; }
+        
+        Plotly.plot('graph9', [{y: [1,2,3].map(rand), mode: 'lines', 
+        line: {color: '#80CAF6'}
+        }]);
+        
+        var cnt = 0;
+        var interval = setInterval(function() {
+            
+            Plotly.extendTraces('graph9', {y: [[ rand() ]]}, [0])
+            if(cnt === 100) clearInterval(interval);}, 300);
+    </script>
+
+    <div id="graph10" class="image-container"></div>
+    <script>
+        function rand() { return "{{ predict10 }}"; }
+        
+        Plotly.plot('graph10', [{y: [1,2,3].map(rand), mode: 'lines', 
+        line: {color: '#80CAF6'}
+        }]);
+        
+        var cnt = 0;
+        var interval = setInterval(function() {
+            
+            Plotly.extendTraces('graph10', {y: [[ rand() ]]}, [0])
+            if(cnt === 100) clearInterval(interval);}, 300);
+    </script>
+
+    <div id="graph11" class="image-container"></div>
+    <script>
+        function rand() { return "{{ predict11 }}"; }
+        
+        Plotly.plot('graph11', [{y: [1,2,3].map(rand), mode: 'lines', 
+        line: {color: '#80CAF6'}
+        }]);
+        
+        var cnt = 0;
+        var interval = setInterval(function() {
+            
+            Plotly.extendTraces('graph11', {y: [[ rand() ]]}, [0])
+            if(cnt === 100) clearInterval(interval);}, 300);
+    </script>
+
+    <div id="graph12" class="image-container"></div>
+    <script>
+        function rand() { return "{{ predict12 }}"; }
+        
+        Plotly.plot('graph12', [{y: [1,2,3].map(rand), mode: 'lines', 
+        line: {color: '#80CAF6'}
+        }]);
+        
+        var cnt = 0;
+        var interval = setInterval(function() {
+            
+            Plotly.extendTraces('graph12', {y: [[ rand() ]]}, [0])
+            if(cnt === 100) clearInterval(interval);}, 300);
+    </script>
+
+    <div id="graph13" class="image-container"></div>
+    <script>
+        function rand() { return "{{ predict13 }}"; }
+        
+        Plotly.plot('graph13', [{y: [1,2,3].map(rand), mode: 'lines', 
+        line: {color: '#80CAF6'}
+        }]);
+        
+        var cnt = 0;
+        var interval = setInterval(function() {
+            
+            Plotly.extendTraces('graph13', {y: [[ rand() ]]}, [0])
+            if(cnt === 100) clearInterval(interval);}, 300);
+    </script>
+
+    <!-- <div class="image-container">
         <p>Pembersihan:</p>
         <img src="{{ alarm1 }}" alt="Image 1" width="150" height="150">
         <p>{{ predict1 }}</p>
@@ -95,7 +347,7 @@
         <p>Profit:</p>
         <img src="{{ alarm13 }}" alt="Image 13" width="150" height="150">
         <p>{{ predict13 }}</p>
-    </div>
+    </div> -->
 
 
     <div class="container">
